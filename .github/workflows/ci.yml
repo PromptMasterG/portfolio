@@ -1,0 +1,147 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  LC_ALL: C.UTF-8
+  LANG: C.UTF-8
+
+jobs:
+  leak-scan:
+    name: Leak scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Scanner tests (fixtures that must fail and must pass)
+        run: python3 -m unittest discover -s .github/scripts/tests -v
+      - name: Scan the source tree
+        run: python3 .github/scripts/leak_scan.py
+      - name: Screenshots are untouched (no image may be added or changed without the owner's review)
+        run: python3 .github/scripts/assets_check.py --base origin/main
+      - name: Commit messages, added lines and the history of the checks themselves
+        run: |
+          # On a pull request the checkout is a synthetic merge commit whose message is two hashes.
+          # It carries no authored text, so merges are skipped and every real commit is still scanned.
+          git log --no-merges --format=%B origin/main..HEAD | python3 .github/scripts/leak_scan.py --stdin messages
+          git log --no-merges -p --format= origin/main..HEAD -- . ':(exclude).github/scripts' | python3 .github/scripts/leak_scan.py --stdin diff
+          git log --no-merges -p --format= origin/main..HEAD -- .github/scripts | python3 .github/scripts/leak_scan.py --stdin secrets
+      - name: Pull request title and description
+        if: github.event_name == 'pull_request'
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: printf '%s\n%s\n' "$PR_TITLE" "$PR_BODY" | python3 .github/scripts/leak_scan.py --stdin messages
+      - name: Structure and traceability checks on the source
+        run: |
+          pip install --quiet pyyaml==6.0.3
+          python3 .github/scripts/site_checks.py --source
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          path: vendor/bundle
+          key: gems-${{ runner.os }}-${{ hashFiles('Gemfile') }}
+      - name: Install Jekyll with the GitHub Pages plugin set
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ruby-dev build-essential zlib1g-dev
+          sudo gem install bundler -v '~> 2.5' --no-document
+          bundle config set --local path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Build, treating warnings as errors
+        env:
+          JEKYLL_ENV: production
+        run: |
+          # The log goes outside the source tree so that it is never copied into the site.
+          set -o pipefail
+          bundle exec jekyll build --strict_front_matter --destination _site 2>&1 | tee "$RUNNER_TEMP/build.log"
+          if grep -Eiq 'warning|deprecat|conflict|exception' "$RUNNER_TEMP/build.log"; then
+            echo "The build logged a warning or error:"
+            grep -Ei 'warning|deprecat|conflict|exception' "$RUNNER_TEMP/build.log"
+            exit 1
+          fi
+      - name: Structure, security and traceability checks on the built site
+        run: |
+          pip install --quiet pyyaml==6.0.3
+          python3 .github/scripts/site_checks.py --source --site _site
+      - name: Leak scan of the built site
+        run: python3 .github/scripts/leak_scan.py --site _site
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: _site
+          retention-days: 3
+
+  links:
+    name: Links
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+      - name: Internal links are errors; external links get retries
+        run: python3 .github/scripts/links.py --site _site --base /portfolio --external --skip linkedin.com
+
+  a11y:
+    name: Accessibility
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install axe and the browser driver
+        run: npm install --ignore-scripts --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/tools" playwright-core@1.63.0 @axe-core/playwright@4.14.0
+      - name: Axe on every page in light and dark, plus keyboard behaviour
+        env:
+          NODE_PATH: ${{ runner.temp }}/tools/node_modules
+        run: |
+          export CHROME_PATH="$(command -v google-chrome || command -v chromium-browser || command -v chromium)"
+          node .github/scripts/a11y.js _site /portfolio
+
+  perf:
+    name: Performance
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: _site
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Lighthouse CI
+        run: npm install --ignore-scripts --no-save --no-audit --no-fund --prefix "$RUNNER_TEMP/tools" @lhci/cli@0.15.1
+      - name: Lighthouse on Home and two case studies, mobile profile, each category at 95 or above
+        run: |
+          export CHROME_PATH="$(command -v google-chrome || command -v chromium-browser || command -v chromium)"
+          export LHCI_BIN="$RUNNER_TEMP/tools/node_modules/.bin/lhci"
+          node .github/scripts/perf.js _site /portfolio

@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<div class="wrap">
+  <header class="page-head">
+    {%- if page.eyebrow %}<p class="eyebrow">{{ page.eyebrow }}</p>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {%- if page.dek %}<p class="dek">{{ page.dek }}</p>{% endif %}
+  </header>
+  <div class="page-body">
+    {%- if page.project_index %}
+    <ol class="index-list">
+      {%- for pr in site.data.projects %}
+      <li class="reveal"><span class="num">{{ pr.num }}</span><div><h2><a href="{{ pr.url | relative_url }}">{{ pr.title }}</a></h2><p>{{ pr.what }}</p></div><p class="small">{{ pr.area }}<br>{{ pr.status }}</p></li>
+      {%- endfor %}
+    </ol>
+    {%- endif %}
+    {{ content }}
+    {% include figures-note.html %}
+  </div>
+</div>

@@ -1,0 +1,21 @@
+{%- if page.facts and page.facts.size > 0 %}
+<section class="figures-note" id="figures" aria-labelledby="figures-h">
+  <h2 id="figures-h">Figures on this page</h2>
+  <p>Each figure is listed with what it measures, the date it was measured or counted, and how. A qualifier appears wherever one applies.</p>
+  <table class="ledger">
+    <caption class="sr">Figures on this page, with dates and basis</caption>
+    <thead><tr><th scope="col">What it measures</th><th scope="col">Figure</th><th scope="col">As of</th></tr></thead>
+    <tbody>
+    {%- for id in page.facts %}
+      {%- assign f = site.data.facts[id] -%}
+      {%- unless f -%}{% include error-unknown-fact.html %}{%- endunless %}
+      <tr>
+        <th scope="row">{{ f.label }}</th>
+        <td>{{ f.value }}{% if f.detail %} ({{ f.detail }}){% endif %}{% if f.qualifier %}<span class="qual">{{ f.qualifier }}</span>{% endif %}{% if f.basis %}<span class="basis">{{ f.basis }}</span>{% endif %}{% if f.sum_of %}<span class="basis">Sum of the three counts: {% for sid in f.sum_of %}{% assign sf = site.data.facts[sid] %}{{ sf.short }}{% unless forloop.last %} + {% endunless %}{% endfor %}.</span>{% endif %}</td>
+        <td>{% if f.period %}{{ f.period }}<span class="basis">Stated <time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time></span>{% else %}<time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time>{% endif %}</td>
+      </tr>
+    {%- endfor %}
+    </tbody>
+  </table>
+</section>
+{%- endif %}

@@ -1,0 +1,7 @@
+{%- assign f = site.data.facts[include.id] -%}
+{%- unless f -%}{% include error-unknown-fact.html %}{%- endunless -%}
+<div class="evidence">
+  <p class="ev-value">{{ f.short | default: f.value }}</p>
+  <p class="ev-label">{{ f.label }}</p>
+  <p class="ev-date">{% if f.qualifier %}<span class="ev-q">{{ f.qualifier }}</span> {% endif %}{% if f.period %}Stated {% else %}As of {% endif %}<time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time></p>
+</div>

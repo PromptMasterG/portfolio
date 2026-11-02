@@ -1,0 +1,28 @@
+{%- assign vf = include.project.visual_facts -%}
+{%- assign first_id = vf | first -%}
+{%- assign first = site.data.facts[first_id] -%}
+{%- unless first -%}{% include error-unknown-fact.html %}{%- endunless -%}
+{%- if include.project.visual == 'weights' -%}
+{%- assign sec = first -%}
+{%- assign tot = site.data.facts['signal-rubric'] -%}
+<div class="visual vis-weights">
+  <p class="vis-title">{{ tot.short }}, by section</p>
+  <ul class="vis-bars">
+    {%- for part in sec.parts %}
+    <li><span class="vis-name">{{ part.name }}</span><span class="vis-bar w{{ part.weight }}" aria-hidden="true"></span><span class="vis-num">{{ part.weight }}</span></li>
+    {%- endfor %}
+  </ul>
+  <p class="vis-note">Section names and points only. As of <time datetime="{{ sec.as_of | date: '%Y-%m-%d' }}">{{ sec.as_of | date: "%-d %b %Y" }}</time>.</p>
+</div>
+{%- elsif include.project.visual == 'stats' -%}
+<div class="visual vis-stats">
+  <p class="vis-title">What the suite holds</p>
+  <ul class="vis-tiles">
+    {%- for id in vf %}
+    {%- assign t = site.data.facts[id] -%}
+    <li><span class="vis-big">{{ t.short }}</span><span class="vis-unit">{{ t.unit }}</span></li>
+    {%- endfor %}
+  </ul>
+  <p class="vis-note">As of <time datetime="{{ first.as_of | date: '%Y-%m-%d' }}">{{ first.as_of | date: "%-d %b %Y" }}</time>.</p>
+</div>
+{%- endif -%}

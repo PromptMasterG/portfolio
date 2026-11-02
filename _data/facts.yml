@@ -1,0 +1,538 @@
+# Every figure on the site lives here. Pages render it with the fact include and never retype it.
+# label = what it measures. value = the phrase used in prose. short = compact form for stat displays.
+# as_of = the date the figure was measured, counted or last stated. claim and status point at the claims register.
+# qualifier is required for status Q and is shown with the figure.
+
+# ---------------------------------------------------------------- Samara
+samara-model-size:
+  label: Size of the model Samara runs locally
+  value: "12-billion-parameter"
+  as_of: 2026-07-18
+  claim: C10
+  status: S
+
+samara-tps-gpu:
+  label: Generation speed of the local 12-billion-parameter model on a 16 GB consumer GPU
+  value: "about 80 tokens per second"
+  strip_label: "AI answering speed, run locally on a 16 GB consumer graphics card"
+  short: "~80 tokens/s"
+  as_of: 2026-07-18
+  claim: C10
+  status: S
+  basis: Measured on my development machine (Ryzen 7 9700X, 61.6 GB RAM, RTX 5070 Ti).
+
+samara-tps-cpu:
+  label: Generation speed of the same model on CPU only
+  value: "about 7.5 tokens per second"
+  short: "~7.5 tokens/s"
+  as_of: 2026-07-18
+  claim: C10
+  status: S
+  basis: Measured on the same development machine.
+
+samara-cache-reuse:
+  label: Prompt reuse on a warm call
+  value: "99% prompt reuse"
+  short: "99%"
+  detail: "40 of 3,826 prompt tokens re-processed"
+  as_of: 2026-07-20
+  claim: C11
+  status: S
+
+samara-prefill-actual:
+  label: Measured CPU prompt-processing time for a 2.2K-token prompt
+  value: "about 6 seconds"
+  as_of: 2026-08-03
+  claim: C12
+  status: S
+
+samara-prefill-estimate:
+  label: My earlier estimate for the same prompt, extrapolated from generation speed
+  value: "about 2 minutes"
+  as_of: 2026-08-03
+  claim: C12
+  status: S
+
+samara-prefill-error:
+  label: Size of my estimate error
+  value: "about twenty times"
+  as_of: 2026-08-03
+  claim: C12
+  short: "~20x"
+  strip_label: "how far off my own estimate was, until I measured it and corrected the plan"
+  status: S
+
+samara-prefill-prompt:
+  label: Prompt length used for the CPU prompt-processing measurement
+  value: "2.2K-token"
+  as_of: 2026-08-03
+  claim: C12
+  status: S
+
+samara-suite-size:
+  label: Size of the persona regression suite
+  value: "45-case"
+  short: "45-case"
+  as_of: 2026-08-05
+  claim: C13
+  status: S
+
+samara-suite-pass:
+  label: Persona regression cases that passed on the 5 Aug 2026 run
+  value: "44 of 45"
+  strip_label: "regression test cases on the AI character passing"
+  short: "44 of 45"
+  as_of: 2026-08-05
+  claim: C13
+  status: S
+
+samara-adversarial:
+  label: Adversarial cases that failed on first contact, and how many of those exposed real product defects
+  value: "four adversarial cases failed on first contact, and two of them exposed genuine product defects"
+  short: "4 failed, 2 real defects"
+  as_of: 2026-11-01
+  claim: C14
+  status: S
+
+samara-ts-lines:
+  label: Samara TypeScript size, tests included
+  value: "about 19.5K lines of TypeScript, tests included"
+  as_of: 2026-11-01
+  claim: C15
+  status: S
+  basis: Line count.
+
+samara-rust-lines:
+  label: Samara Rust size
+  value: "2.9K lines of Rust"
+  as_of: 2026-11-01
+  claim: C15
+  status: S
+  basis: Line count.
+
+samara-tests:
+  label: Automated tests in Samara
+  value: "393 test cases in 42 test files"
+  short: "393 tests"
+  as_of: 2026-11-01
+  claim: C15
+  status: S
+  basis: Count of test declarations.
+
+samara-commits:
+  label: Commits between 18 Jul and 7 Aug 2026
+  value: "92 commits between 18 Jul and 7 Aug 2026"
+  as_of: 2026-08-07
+  claim: C16
+  status: S
+
+# ---------------------------------------------------------------- AI Studio Tool
+studio-tools:
+  label: Tools exposed by the agent server
+  value: "44 tools"
+  as_of: 2026-11-01
+  claim: C30
+  status: S
+
+studio-agents:
+  label: Agents behind the server
+  value: "an orchestrator and ten specialist agents"
+  short: "10 specialists"
+  as_of: 2026-11-01
+  claim: C30
+  status: S
+
+studio-py-lines:
+  label: Agent server Python size, tests excluded
+  value: "about 22.8K lines of Python in the agent server, tests excluded"
+  as_of: 2026-11-01
+  claim: C31
+  status: S
+  basis: Line count.
+
+studio-tests:
+  label: Automated tests in the agent server
+  value: "1,013 test functions in 50 files in the agent server"
+  short: "1,013 tests"
+  as_of: 2026-11-01
+  claim: C31
+  status: S
+  basis: Count of test declarations.
+
+studio-commits:
+  label: Commits in the agent server's history
+  value: "37 commits"
+  as_of: 2026-11-01
+  claim: C31
+  status: S
+
+studio-writes:
+  label: Write routes defined in the Studio Deck's server
+  value: "nine write routes, where its README lists three"
+  as_of: 2026-11-01
+  claim: C34
+  status: Q
+  qualifier: Counted by reading the route list. I did not run the write routes. The documentation is behind the code and I have not reconciled the two.
+
+# ---------------------------------------------------------------- AI Studio Tool desktop app
+mcs-library:
+  label: Records held in the desktop app
+  value: "34 character records covering 22 distinct characters, 79 locations and 83 scripts across 18 labs"
+  short: "22 characters, 79 locations, 83 scripts"
+  as_of: 2026-11-01
+  claim: C40
+  status: S
+
+mcs-characters:
+  label: "Characters held in the desktop app"
+  value: "34 character records covering 22 distinct characters"
+  short: "22"
+  unit: "distinct characters"
+  as_of: 2026-11-01
+  claim: C40
+  status: S
+
+mcs-locations:
+  label: "Locations held in the desktop app"
+  value: "79 locations"
+  short: "79"
+  unit: "locations"
+  as_of: 2026-11-01
+  claim: C40
+  status: S
+
+mcs-scripts:
+  label: "Scripts held in the desktop app"
+  value: "83 scripts"
+  short: "83"
+  unit: "scripts"
+  as_of: 2026-11-01
+  claim: C40
+  status: S
+
+mcs-labs:
+  label: "Labs held in the desktop app"
+  value: "18 labs"
+  short: "18"
+  unit: "labs"
+  as_of: 2026-11-01
+  claim: C40
+  status: S
+
+mcs-collections:
+  label: Knowledge collections that agents query before generating
+  value: "12 knowledge collections holding about 7K chunks"
+  short: "12 collections"
+  as_of: 2026-11-01
+  claim: C40
+  status: S
+
+mcs-mcp:
+  label: Size of the local MCP server's surface
+  value: "52 tools and 12 resource entries in the desktop app's own MCP server"
+  as_of: 2026-11-01
+  claim: C41
+  status: S
+  basis: Counted in a live session against a copy of the app.
+
+mcs-turnaround:
+  label: Change in production turnaround
+  value: "a fall of 70% or more in production turnaround, self-measured, with base figures not recorded"
+  short: "70% or more faster"
+  as_of: 2026-11-01
+  claim: C42
+  status: Q
+  qualifier: Self-measured. I did not record base figures.
+
+mcs-assets:
+  label: Video assets produced
+  value: "500+ video assets"
+  as_of: 2026-11-01
+  claim: C43
+  status: Q
+  qualifier: Counts assets, not finished videos.
+
+mcs-lines:
+  label: Desktop app code size
+  value: "about 12.9K lines of Python in the desktop app's back end, 2.1K in its MCP server and 15.9K in its front end"
+  as_of: 2026-11-01
+  claim: C44
+  status: S
+  basis: Line count.
+
+mcs-tests:
+  label: Automated tests in the desktop app
+  value: "72 test functions in the desktop app"
+  short: "72 tests"
+  as_of: 2026-11-01
+  claim: C44
+  status: S
+  basis: Count of test declarations.
+
+# ---------------------------------------------------------------- all three codebases
+tests-total:
+  label: Automated tests across Samara and the two AI Studio Tool codebases
+  value: "1,400+ automated tests across three codebases"
+  strip_label: "automated checks on the software, across three codebases"
+  short: "1,400+"
+  as_of: 2026-11-01
+  claim: C45
+  status: S
+  sum_of: [samara-tests, studio-tests, mcs-tests]
+  basis: Sum of test declarations in the three codebases. Signal and the Studio Deck are not counted.
+
+# ---------------------------------------------------------------- Signal
+signal-rubric:
+  label: Signal's grading scale
+  value: "a 100-point, seven-section rubric"
+  short: "100-point rubric"
+  as_of: 2026-11-01
+  claim: C50
+  status: S
+
+signal-sections:
+  label: Section weights in Signal's 100-point rubric (section names and weights only)
+  value: "seven sections, weighted as the table shows"
+  as_of: 2026-11-01
+  claim: C50
+  status: S
+  parts:
+    - {name: Idea-package fit, weight: 10}
+    - {name: Title and hook, weight: 20}
+    - {name: Thumbnail, weight: 20}
+    - {name: First 3 seconds, weight: 15}
+    - {name: First 30 seconds, weight: 15}
+    - {name: Open loops, weight: 10}
+    - {name: Packaging ethics, weight: 10}
+
+signal-columns:
+  label: Size of the spreadsheet Signal replaced
+  value: "43-column spreadsheet"
+  as_of: 2026-11-01
+  claim: C51
+  status: S
+
+signal-passes:
+  label: Redesign passes Signal has had
+  value: "three redesign passes"
+  as_of: 2026-11-01
+  claim: C51
+  status: S
+
+signal-lines:
+  label: Signal JavaScript size
+  value: "about 4.1K lines of JavaScript"
+  as_of: 2026-11-01
+  claim: C52
+  status: S
+  basis: Line count.
+
+# ---------------------------------------------------------------- Prompt Master G
+pmg-templates:
+  label: Product-shot templates in Commercial Mode
+  value: "four product-shot templates"
+  as_of: 2026-11-01
+  claim: C60
+  status: S
+  basis: Checked on the live tool.
+
+pmg-sheets:
+  label: Published cheat sheets
+  value: "five cheat sheets"
+  short: "Five cheat sheets"
+  as_of: 2026-11-01
+  claim: C61
+  status: S
+  basis: Checked on the live tool.
+
+# ---------------------------------------------------------------- The Mafia Cats
+series-reach:
+  label: Output and lifetime views of The Mafia Cats
+  value: "110+ videos and about 211K lifetime views"
+  strip_label: "lifetime views across 110+ videos of one AI comedy series, read from the YouTube API"
+  short: "~211K views"
+  as_of: 2026-10-05
+  claim: C70
+  status: S
+  basis: YouTube API.
+
+series-seasons:
+  label: Seasons of The Mafia Cats
+  value: "six seasons"
+  as_of: 2026-10-05
+  claim: C70
+  status: S
+
+series-subs:
+  label: Subscribers to the series channel
+  value: "1,520 subscribers"
+  as_of: 2026-10-05
+  claim: C70
+  status: S
+  basis: YouTube API.
+
+series-top3:
+  label: Views on the three most-watched videos
+  value: "9.1K, 7.9K and 7.0K views"
+  as_of: 2026-10-05
+  claim: C71
+  status: S
+
+series-ceiling:
+  label: Highest view count passed by any video in the series
+  value: "no video has passed 10K views"
+  as_of: 2026-10-05
+  claim: C71
+  status: S
+
+video-views-1:
+  label: Views on the most-watched video
+  value: "9,114 views"
+  as_of: 2026-10-05
+  claim: C71
+  status: S
+
+video-views-2:
+  label: Views on the second most-watched video
+  value: "7,897 views"
+  as_of: 2026-10-05
+  claim: C71
+  status: S
+
+video-views-3:
+  label: Views on the third most-watched video
+  value: "7,045 views"
+  as_of: 2026-10-05
+  claim: C71
+  status: S
+
+best-format:
+  label: Length of the best-performing story episodes, published January to early March 2026
+  value: "70 to 210 seconds"
+  as_of: 2026-10-05
+  claim: C73
+  status: S
+
+persona-views:
+  label: Views on a separate AI persona series
+  value: "passed 2.5M views"
+  as_of: 2026-11-01
+  claim: C74
+  status: Q
+  qualifier: Creator-reported.
+
+# ---------------------------------------------------------------- Earlier work (M2 Biosciences)
+m2-videos:
+  label: Videos scripted, recorded and fronted at M2 Biosciences, Jan to Sep 2024
+  value: "65+ videos"
+  as_of: 2026-11-01
+  claim: C75
+  status: Q
+  qualifier: Creator-reported.
+  period: Jan to Sep 2024
+
+m2-linkedin:
+  label: LinkedIn follower growth at M2 Biosciences
+  value: "+1,466%"
+  as_of: 2026-11-01
+  claim: C76
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+m2-impressions:
+  label: LinkedIn post impressions growth at M2 Biosciences
+  value: "+628%"
+  as_of: 2026-11-01
+  claim: C76
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+m2-tiktok:
+  label: TikTok views growth at M2 Biosciences
+  value: "+546%"
+  as_of: 2026-11-01
+  claim: C76
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+m2-youtube:
+  label: YouTube views growth at M2 Biosciences
+  value: "+1,000%"
+  as_of: 2026-11-01
+  claim: C76
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+# ---------------------------------------------------------------- More M2 Biosciences results, from the owner's CV
+m2-articles:
+  label: Articles authored at M2 Biosciences, Jan to Sep 2024
+  value: "20+ articles"
+  as_of: 2026-11-01
+  claim: CV01
+  status: Q
+  qualifier: Creator-reported, from my CV.
+  period: Jan to Sep 2024
+
+m2-carousels:
+  label: Carousels authored at M2 Biosciences, Jan to Sep 2024
+  value: "16+ carousels"
+  as_of: 2026-11-01
+  claim: CV01
+  status: Q
+  qualifier: Creator-reported, from my CV.
+  period: Jan to Sep 2024
+
+m2-longform:
+  label: Long-form blog posts authored at M2 Biosciences, Jan to Sep 2024
+  value: "5 long-form blog posts"
+  as_of: 2026-11-01
+  claim: CV01
+  status: Q
+  qualifier: Creator-reported, from my CV.
+  period: Jan to Sep 2024
+
+m2-visitors:
+  label: LinkedIn unique visitor growth at M2 Biosciences
+  value: "+14.4%"
+  as_of: 2026-11-01
+  claim: CV02
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+m2-likes:
+  label: TikTok likes growth at M2 Biosciences
+  value: "+320%"
+  as_of: 2026-11-01
+  claim: CV02
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+m2-profile-views:
+  label: TikTok profile views growth at M2 Biosciences
+  value: "+85%"
+  as_of: 2026-11-01
+  claim: CV02
+  status: Q
+  qualifier: Creator-reported, no base figures recorded, 2024.
+  period: 2024
+
+# ---------------------------------------------------------------- Checking AI output
+recheck-sources:
+  label: Sources re-checked behind AI-drafted lessons for an app I am building
+  value: "about 30 sources"
+  as_of: 2026-11-01
+  claim: C80
+  status: S
+
+recheck-errors:
+  label: Real errors found in those lessons, all fixed
+  value: "nine real errors"
+  as_of: 2026-11-01
+  claim: C80
+  status: S

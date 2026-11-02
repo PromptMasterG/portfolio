@@ -1,0 +1,70 @@
+# Card metadata for the case studies. Numbers come from facts.yml through proof_fact.
+- id: samara
+  fit: engineer
+  num: "01"
+  title: Samara
+  url: /work/samara/
+  status: In development, private
+  area: AI engineering
+  what: A local, offline AI journal for Windows, where a pixel-style character called the Keeper replies in one or two sentences, remembers, and reflects patterns back over time.
+  proof_fact: samara-suite-pass
+  proof_text: persona regression cases passed on the last run
+  image: assets/samara/room-day.png
+  rank_e: 1
+  rank_c: 4
+  featured: true
+
+- id: ai-studio-tool
+  fit: engineer creator
+  num: "02"
+  title: AI Studio Tool
+  url: /work/ai-studio-tool/
+  status: Closed-source, private
+  area: Agents, MCP and AI video production
+  what: An MCP server that gives any agent an orchestrator and ten specialists to run a YouTube channel, beside a separate desktop app that holds the records and prompts for a real series, The Mafia Cats.
+  proof_fact: studio-tools
+  proof_text: exposed to any MCP-capable agent, behind an orchestrator and ten specialists
+  image: assets/ai-studio-tool/studio-deck-org.png
+  rank_e: 2
+  rank_c: 1
+  featured: true
+
+- id: signal
+  fit: creator engineer
+  num: "03"
+  title: Signal
+  url: /work/signal/
+  status: Closed-source, private
+  area: Product and analytics
+  what: An app that grades any YouTube video on a written packaging and retention rubric, so my channel and a competitor can be compared section by section.
+  proof_fact: signal-rubric
+  proof_text: with autosave and a refresh that never overwrites a score
+  visual: weights
+  visual_facts: [signal-sections]
+  rank_e: 3
+  rank_c: 3
+  featured: true
+
+- id: prompt-master-g
+  fit: creator
+  num: "04"
+  title: Prompt Master G
+  url: /work/prompt-master-g/
+  status: Live, free to use
+  area: Public tool
+  what: A free browser tool that turns a shot idea into a structured Veo 3 prompt. Nothing leaves the browser.
+  proof_fact: pmg-sheets
+  proof_text: published beside the builder, and the one place a visitor can try my work today
+  image: assets/prompt-master-g/prompt-builder.png
+  rank_e: 4
+  rank_c: 2
+  featured: true
+
+- id: writing
+  num: "05"
+  title: Writing and character work
+  url: /work/writing/
+  status: Drafted, private
+  area: Writing
+  what: A parody series about AI-hustle culture, drafted with a character bible, a pronunciation guide and episode scripts.
+  featured: false

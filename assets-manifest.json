@@ -1,0 +1,130 @@
+[
+  {
+    "file": "assets/ai-studio-tool/studio-deck-org.png",
+    "project": "ai-studio-tool",
+    "width": 1280,
+    "height": 759,
+    "alt": "Studio Deck org chart: an orchestrator at the centre connected to ten specialist agents, with live session cost and a monthly spend gauge.",
+    "caption": "Studio Deck: the orchestrator and its ten specialists, with session cost, token count and a monthly spend ceiling in view."
+  },
+  {
+    "file": "assets/prompt-master-g/prompt-builder.png",
+    "project": "prompt-master-g",
+    "width": 1280,
+    "height": 800,
+    "alt": "VEO 3 Prompt Master G web app: a three-step builder with a live prompt preview and a JSON output panel.",
+    "caption": "The public tool: build a structured Veo 3 shot in three steps and export it as JSON."
+  },
+  {
+    "file": "assets/prompt-master-g/cheat-sheets.png",
+    "project": "prompt-master-g",
+    "width": 1280,
+    "height": 800,
+    "alt": "Prompt Cheat Sheets page listing five guides: robotic dialogue, character consistency, structured prompting, cinematic camera shots and sound design.",
+    "caption": "Five published cheat sheets for AI video creators."
+  },
+  {
+    "file": "assets/samara/room-day.png",
+    "project": "samara",
+    "width": 1280,
+    "height": 800,
+    "alt": "Samara journal app home screen: an illustrated room with a character writing at a desk, bookshelf, fireplace and a window showing daytime.",
+    "caption": "The home screen is a room, not a chat window. Light and season outside the window follow the real time and date."
+  },
+  {
+    "file": "assets/samara/room-night.png",
+    "project": "samara",
+    "width": 1280,
+    "height": 800,
+    "alt": "Samara journal app home screen at night: the same room in dark tones with a moon in the window.",
+    "caption": "The same room at night."
+  },
+  {
+    "file": "assets/ai-studio-tool/dashboard.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "AI Studio Tool desktop app, dark theme: pinned labs, a Channel Intelligence panel with subscriber, view and video counts and a stale-data warning, a Vault Health panel with twelve knowledge vaults whose names are blocked out, and a grid of every lab grouped by stage, with two descriptions blocked out.",
+    "caption": "The desktop app's dashboard, with the Mafia Cats channel as the example: channel numbers with a stale-data warning, knowledge-vault health, and every lab grouped by stage. Internal names are blocked out."
+  },
+  {
+    "file": "assets/ai-studio-tool/agent-lab.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Agent Lab, Autonomous Core tab: a Master Orchestrator form with season and episode values blocked out, an agent assignment menu showing a script agent, a director's instruction box with its example text blocked out, an Execute Handshake button and an empty telemetry log.",
+    "caption": "Agent Lab: the orchestrator form assigns a job to an agent for an episode and shows the run's telemetry. Shown before a run; the button was not pressed. Season, episode and the example text are blocked out."
+  },
+  {
+    "file": "assets/ai-studio-tool/scene-builder.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Scene Builder tab with the season, episode and title values blocked out, import, paste-script and new-scene buttons, and an empty state reading No scenes yet.",
+    "caption": "Scene Builder, shown empty, with the season, episode and title values blocked out. The dashboard describes it as a seven-layer Veo 3 compiler."
+  },
+  {
+    "file": "assets/ai-studio-tool/script-lab.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Script Lab with brainstorm, assembler, compiler, viewer and timeline tabs, showing the empty Master Prompt Package Sequence panel of the compiler tab.",
+    "caption": "Script Lab has five tabs: brainstorm, assembler, compiler, viewer and timeline. The compiler tab is shown empty."
+  },
+  {
+    "file": "assets/ai-studio-tool/meowtok-meme.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "MeowTok meme editor with classic and modern modes, top and bottom text fields and a live preview of a meme with a cat emoji.",
+    "caption": "MeowTok, the social-graphics lab, with comic strip, meme, quote card, carousel and direct-message mock editors and PNG export. Sample text."
+  },
+  {
+    "file": "assets/ai-studio-tool/meowtok-carousel.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "MeowTok carousel editor with slide number, headline, body text and call-to-action fields, and a live preview of one carousel slide.",
+    "caption": "MeowTok carousel editor with a live preview, shown with sample text."
+  },
+  {
+    "file": "assets/ai-studio-tool/deck-scout.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Studio Deck org chart with the Scout panel open, showing the role's job, what it produces and the keywords it routes on.",
+    "caption": "Studio Deck: the orchestrator and its ten roles, with the panel for one role open. This one is Scout. The Deck is shown as a snapshot, with no channel attached. One setting name in the banner is blocked out."
+  },
+  {
+    "file": "assets/ai-studio-tool/deck-strategist.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Studio Deck org chart with the Strategist panel open, showing the role's job, what it produces and the keywords it routes on.",
+    "caption": "Studio Deck: the orchestrator and its ten roles, with the panel for one role open. This one is Strategist. The Deck is shown as a snapshot, with no channel attached. One setting name in the banner is blocked out."
+  },
+  {
+    "file": "assets/ai-studio-tool/deck-manager.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Studio Deck org chart with the Manager panel open, showing the role's job, what it produces and the keywords it routes on.",
+    "caption": "Studio Deck: the orchestrator and its ten roles, with the panel for one role open. This one is Manager. The Deck is shown as a snapshot, with no channel attached. One setting name in the banner is blocked out."
+  },
+  {
+    "file": "assets/ai-studio-tool/deck-publisher.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Studio Deck org chart with the Publisher panel open, showing the role's job, what it produces and the keywords it routes on.",
+    "caption": "Studio Deck: the orchestrator and its ten roles, with the panel for one role open. This one is Publisher. The Deck is shown as a snapshot, with no channel attached. One setting name in the banner is blocked out."
+  },
+  {
+    "file": "assets/ai-studio-tool/deck-seo.png",
+    "project": "ai-studio-tool",
+    "width": 1920,
+    "height": 1080,
+    "alt": "Studio Deck org chart with the SEO panel open, showing the role's job, what it produces and the keywords it routes on.",
+    "caption": "Studio Deck: the orchestrator and its ten roles, with the panel for one role open. This one is SEO. The Deck is shown as a snapshot, with no channel attached. One setting name in the banner is blocked out."
+  }
+]

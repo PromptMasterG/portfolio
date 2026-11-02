@@ -1,0 +1,15 @@
+<table class="ledger">
+  <caption>{{ include.caption }}</caption>
+  <thead><tr><th scope="col">Measure</th><th scope="col">Result</th><th scope="col">As of</th></tr></thead>
+  <tbody>
+  {%- for id in include.ids %}
+    {%- assign f = site.data.facts[id] -%}
+    {%- unless f -%}{% include error-unknown-fact.html %}{%- endunless %}
+    <tr>
+      <th scope="row">{{ f.label }}</th>
+      <td><span class="res">{{ f.value }}</span>{% if f.detail %} ({{ f.detail }}){% endif %}{% if f.qualifier %}<span class="qual">{{ f.qualifier }}</span>{% endif %}{% if f.basis %}<span class="basis">{{ f.basis }}</span>{% endif %}</td>
+      <td>{% if f.period %}{{ f.period }}<span class="basis">Stated <time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time></span>{% else %}<time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time>{% endif %}</td>
+    </tr>
+  {%- endfor %}
+  </tbody>
+</table>

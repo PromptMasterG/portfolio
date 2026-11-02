@@ -1,0 +1,3 @@
+{%- assign f = site.data.facts[include.id] -%}
+{%- unless f -%}{% include error-unknown-fact.html %}{%- endunless -%}
+<span class="fact">{%- if include.form == 'short' and f.short -%}{{ f.short }}{%- elsif include.form == 'detail' and f.detail -%}{{ f.detail }}{%- else -%}{{ f.value }}{%- endif -%}</span>

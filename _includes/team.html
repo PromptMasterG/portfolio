@@ -1,0 +1,32 @@
+{%- assign roster = site.data.agents -%}
+{%- assign o = roster.orchestrator -%}
+{%- assign oimg = site.data.images | where: "file", o.image | first -%}
+{%- unless oimg -%}{% include error-unknown-image.html %}{%- endunless -%}
+<section class="team" aria-label="The orchestrator and its ten specialists, each with the screen of the desktop app that comes closest to its job">
+  <figure class="hub">
+    <div class="hub-text">
+      <p class="team-tag">{{ o.name }}</p>
+      <p class="hub-job">{{ o.job }}</p>
+      <p class="seen">Example screen: {{ o.lab }}</p>
+    </div>
+    <a class="zoom thumb" href="{{ oimg.file | relative_url }}"><img src="{{ oimg.file | relative_url }}" width="{{ oimg.width }}" height="{{ oimg.height }}" alt="The {{ o.lab }} screen of the desktop app" loading="lazy" decoding="async"></a>
+  </figure>
+  <ol class="team-grid">
+    {%- for a in roster.specialists %}
+    {%- if a.image -%}
+    {%- assign aimg = site.data.images | where: "file", a.image | first -%}
+    {%- unless aimg -%}{% include error-unknown-image.html %}{%- endunless -%}
+    {%- endif %}
+    <li class="agent">
+      <figure>
+        {%- if a.image %}
+        <a class="zoom thumb crop-{{ a.crop }}" href="{{ aimg.file | relative_url }}"><img src="{{ aimg.file | relative_url }}" width="{{ aimg.width }}" height="{{ aimg.height }}" alt="The {{ a.lab }} screen of the desktop app" loading="lazy" decoding="async"></a>
+        {%- else %}
+        <span class="thumb mono" aria-hidden="true">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
+        {%- endif %}
+        <figcaption><strong>{{ a.name }}</strong><span class="job">{{ a.job }}</span>{% if a.lab %}<span class="seen">Example screen: {{ a.lab }}</span>{% else %}<span class="seen none">No screen in this set</span>{% endif %}</figcaption>
+      </figure>
+    </li>
+    {%- endfor %}
+  </ol>
+</section>

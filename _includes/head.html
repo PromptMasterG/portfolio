@@ -1,0 +1,41 @@
+{%- assign p = site.data.profile -%}
+{%- if page.url == '/' -%}
+  {%- assign full_title = p.name | append: ': ' | append: p.headline -%}
+{%- else -%}
+  {%- assign full_title = page.title | append: ' | ' | append: p.name -%}
+{%- endif -%}
+{%- assign og_file = page.og_image | default: 'assets/samara/room-day.png' -%}
+{%- assign og = site.data.images | where: "file", og_file | first -%}
+{%- unless og -%}{% include error-unknown-image.html %}{%- endunless -%}
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; manifest-src 'self'">
+<title>{{ full_title }}</title>
+<meta name="description" content="{{ page.description | escape }}">
+<meta name="author" content="{{ p.name }}">
+<meta name="robots" content="{% if page.url == '/404.html' %}noindex, follow{% else %}index, follow{% endif %}, noai, noimageai">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F7F5F0" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0D1217" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="{{ page.url | absolute_url }}">
+<link rel="icon" href="data:,">
+<meta property="og:site_name" content="{{ p.name }}">
+<meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
+<meta property="og:title" content="{{ full_title | escape }}">
+<meta property="og:description" content="{{ page.description | escape }}">
+<meta property="og:url" content="{{ page.url | absolute_url }}">
+<meta property="og:image" content="{{ og.file | prepend: '/' | absolute_url }}">
+<meta property="og:image:width" content="{{ og.width }}">
+<meta property="og:image:height" content="{{ og.height }}">
+<meta property="og:image:alt" content="{{ og.alt | escape }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ full_title | escape }}">
+<meta name="twitter:description" content="{{ page.description | escape }}">
+<meta name="twitter:image" content="{{ og.file | prepend: '/' | absolute_url }}">
+<meta name="twitter:image:alt" content="{{ og.alt | escape }}">
+<link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+<noscript><link rel="stylesheet" href="{{ '/assets/css/nojs.css' | relative_url }}"></noscript>
+<script src="{{ '/assets/js/site.js' | relative_url }}" defer></script>
+{%- if page.jsonld %}
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":{{ p.name | jsonify }},"jobTitle":{{ p.headline | jsonify }},"url":{{ '/' | absolute_url | jsonify }},"address":{"@type":"PostalAddress","addressLocality":"Johannesburg","addressCountry":"ZA"},"sameAs":[{{ p.linkedin | jsonify }},{{ p.youtube | jsonify }}]}</script>
+{%- endif %}

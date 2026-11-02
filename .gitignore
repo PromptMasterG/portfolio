@@ -1,0 +1,22 @@
+# Private working material must never be committed here.
+MASTER_PROMPT*
+PASTE_ME*
+HOW_TO_RUN*
+.env
+.env.*
+*.pem
+*.key
+node_modules/
+
+# Build output and caches
+_site/
+.jekyll-cache/
+.sass-cache/
+.bundle/
+vendor/
+Gemfile.lock
+__pycache__/
+*.pyc
+.lighthouseci/
+node_modules/
+_site-*/

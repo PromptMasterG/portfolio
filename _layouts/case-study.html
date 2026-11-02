@@ -1,0 +1,74 @@
+---
+layout: default
+---
+{%- assign proj = site.data.projects | where: "id", page.project | first -%}
+<article aria-labelledby="case-title">
+  <header class="wrap case-head">
+    <p class="eyebrow"><a href="{{ '/work/' | relative_url }}">Work</a> / Project {{ proj.num }}</p>
+    <h1 id="case-title">{{ page.title }}</h1>
+    <p class="dek">{{ page.dek }}</p>
+    {%- assign pf = site.data.facts[proj.proof_fact] %}
+    {%- if pf %}
+    <p class="case-proof"><strong>{{ pf.short | default: pf.value }}</strong> {{ proj.proof_text }}. <span class="ev-date">As of <time datetime="{{ pf.as_of | date: '%Y-%m-%d' }}">{{ pf.as_of | date: "%-d %b %Y" }}</time></span></p>
+    {%- endif %}
+    <div class="case-meta"><span class="pill">{{ proj.status }}</span></div>
+  </header>
+  <nav class="subnav" aria-label="On this page">
+    <div class="wrap subnav-in"><strong class="subnav-title">{{ page.title }}</strong><ul><li><a href="#how">How it works</a></li><li><a href="#verification">Evidence</a></li><li><a href="#access">Access</a></li></ul></div>
+  </nav>
+  <div class="wrap">
+    <div class="band" data-n="{{ page.screens.size | default: 0 }}">
+      {%- if page.screens and page.screens.size > 0 %}
+      {%- for f in page.screens %}
+      {% include figure.html file=f eager=forloop.first %}
+      {%- endfor %}
+      {%- else %}
+      {% include visual.html project=proj %}
+      {%- endif %}
+    </div>
+    {%- capture glance_html %}
+        <h2>At a glance</h2>
+        <dl class="glance">
+          <div><dt>Role</dt><dd>{{ page.role }}</dd></div>
+          <div><dt>Period</dt><dd>{{ page.period }}</dd></div>
+          <div><dt>Stack</dt><dd>{{ page.stack }}</dd></div>
+          <div><dt>Scale</dt><dd>{% for id in page.scale %}{% capture one %}{% include fact.html id=id %}{% endcapture %}{{ one | strip }}{% unless forloop.last %}; {% endunless %}{% endfor %}.</dd></div>
+        </dl>
+    {%- endcapture %}
+    {%- if page.wide %}
+    <div class="keyfigs">
+      {%- for id in page.key_facts %}
+      {% include evidence.html id=id %}
+      {%- endfor %}
+    </div>
+    <p class="keyfigs-note"><a href="#verification">Full ledger</a> and <a href="#figures">notes on every figure</a>.</p>
+    <div class="case-wide prose">
+      {{ glance_html }}
+      {{ content }}
+    </div>
+    {%- else %}
+    <div class="case-grid">
+      <div class="prose">
+        {{ glance_html }}
+        {{ content }}
+      </div>
+      <section class="case-side" aria-labelledby="side-h">
+        <h2 id="side-h">Evidence ledger</h2>
+        {%- for id in page.key_facts %}
+        {% include evidence.html id=id %}
+        {%- endfor %}
+        <p class="side-note"><a href="#verification">Full ledger</a> and <a href="#figures">notes on every figure</a>.</p>
+      </section>
+    </div>
+    {%- endif %}
+    {% include figures-note.html %}
+    {%- assign projs = site.data.projects -%}
+    {%- for pr in projs %}{% if pr.id == page.project %}{% assign idx = forloop.index0 %}{% endif %}{% endfor -%}
+    {%- assign prev_i = idx | minus: 1 -%}
+    {%- assign next_i = idx | plus: 1 -%}
+    <nav class="case-nav" aria-label="Other projects">
+      {%- if idx > 0 %}{% assign pv = projs[prev_i] %}<a class="prev" href="{{ pv.url | relative_url }}"><span>Previous</span><strong>{{ pv.title }}</strong></a>{% else %}<span></span>{% endif %}
+      {%- if next_i < projs.size %}{% assign nx = projs[next_i] %}<a class="next" href="{{ nx.url | relative_url }}"><span>Next</span><strong>{{ nx.title }}</strong></a>{% endif %}
+    </nav>
+  </div>
+</article>

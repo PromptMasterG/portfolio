@@ -1,0 +1,6 @@
+{%- assign img = site.data.images | where: "file", include.file | first -%}
+{%- unless img -%}{% include error-unknown-image.html %}{%- endunless -%}
+<figure class="shot">
+  <a class="zoom" href="{{ img.file | relative_url }}"><img src="{{ img.file | relative_url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}"{% unless include.eager %} loading="lazy"{% endunless %} decoding="async"></a>
+  <figcaption>{{ img.caption }}</figcaption>
+</figure>

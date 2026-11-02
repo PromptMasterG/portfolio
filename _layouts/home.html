@@ -1,0 +1,76 @@
+---
+layout: default
+---
+{%- assign p = site.data.profile -%}
+<section class="wrap hero" aria-labelledby="hero-title">
+  <p class="eyebrow">{{ p.name }}</p>
+  <h1 id="hero-title" class="hero-title">{{ p.headline }}</h1>
+  <p class="hero-lede">{{ p.positioning }}</p>
+  <p class="hero-actions"><a class="btn btn-primary" href="#work">See the work</a><a class="btn" href="mailto:{{ p.email }}">Email me</a></p>
+  <p class="hero-email">or write to <a href="mailto:{{ p.email }}">{{ p.email }}</a></p>
+  <p class="hero-avail">{{ p.availability }}</p>
+  <p class="hero-links"><a href="{{ p.linkedin }}" rel="noopener noreferrer">LinkedIn</a><a href="{{ p.tool }}" rel="noopener noreferrer">Try Prompt Master G, the free tool</a><a href="{{ p.youtube }}" rel="noopener noreferrer">The Mafia Cats on YouTube</a></p>
+  {%- assign art_a = site.data.images | where: "file", "assets/samara/room-day.png" | first -%}
+  {%- assign tps = site.data.facts['samara-tps-gpu'] %}
+  <div class="hero-art" aria-hidden="true">
+    <img src="{{ art_a.file | relative_url }}" width="{{ art_a.width }}" height="{{ art_a.height }}" alt="{{ art_a.alt | escape }}" decoding="async">
+    <p class="art-chip"><strong>{{ tps.short }}</strong>measured {{ tps.as_of | date: "%-d %b %Y" }}</p>
+  </div>
+</section>
+
+<div class="wrap lens-bar">
+  <div class="lens" role="group" aria-label="Choose what to emphasise">
+    <span class="lens-label">If you are hiring for:</span>
+    <button type="button" data-lens-btn="engineer" aria-pressed="true">AI engineering</button>
+    <button type="button" data-lens-btn="creator" aria-pressed="false">AI content</button>
+  </div>
+  <p class="lens-fallback">For a one-page version, read the page for <a href="{{ '/for/ai-engineer/' | relative_url }}">AI engineering</a> or <a href="{{ '/for/ai-content-creator/' | relative_url }}">AI content creation</a>.</p>
+</div>
+
+<section class="proof" aria-labelledby="proof-h">
+ <div class="wrap">
+  <h2 id="proof-h" class="kicker">Evidence, with dates</h2>
+  <ol class="proof-list" data-sort>
+    {%- for item in page.proof %}
+    {%- assign f = site.data.facts[item.fact] -%}
+    {%- unless f %}{% include error-unknown-fact.html %}{% endunless %}
+    <li data-id="p{{ forloop.index }}" data-re="{{ item.re }}" data-rc="{{ item.rc }}" data-fit="{{ item.fit }}">
+      <a href="{{ item.href | relative_url }}">
+        <span class="stat">{{ f.short | default: f.value }}</span>
+        <span class="stat-label">{{ f.strip_label | default: f.label }}</span>
+        <span class="stat-date">{{ item.verb }} <time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time></span>
+      </a>
+    </li>
+    {%- endfor %}
+  </ol>
+ </div>
+</section>
+
+<section id="work" class="wrap" aria-labelledby="work-h">
+  <div class="section-head"><h2 id="work-h">Selected work</h2><a href="{{ '/work/' | relative_url }}">All work and the FAQ</a></div>
+  <ol class="rows" data-sort>
+    {%- for pr in site.data.projects %}{% if pr.featured %}
+    {%- if pr.image -%}
+    {%- assign img = site.data.images | where: "file", pr.image | first -%}
+    {%- unless img %}{% include error-unknown-image.html %}{% endunless -%}
+    {%- endif -%}
+    {%- assign f = site.data.facts[pr.proof_fact] -%}
+    {%- unless f %}{% include error-unknown-fact.html %}{% endunless %}
+    <li class="row reveal" data-id="{{ pr.id }}" data-re="{{ pr.rank_e }}" data-rc="{{ pr.rank_c }}" data-fit="{{ pr.fit }}">
+      <div class="row-body">
+        <p class="row-area">{{ pr.area }}</p>
+        <h3><a href="{{ pr.url | relative_url }}">{{ pr.title }}</a></h3>
+        <p>{{ pr.what }}</p>
+        <p class="row-proof"><strong>{{ f.short | default: f.value }}</strong> {{ pr.proof_text }}<span class="stat-date">As of <time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time></span></p>
+        <p class="row-more">Read the case study</p>
+      </div>
+      <figure class="row-img">{% if pr.image %}<img src="{{ img.file | relative_url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}" loading="lazy" decoding="async">{% else %}{% include visual.html project=pr %}{% endif %}</figure>
+    </li>
+    {%- endif %}{% endfor %}
+  </ol>
+</section>
+
+<div class="wrap">
+  {{ content }}
+  {% include figures-note.html %}
+</div>

@@ -1,0 +1,2 @@
+/* Loaded only when scripting is off. Hides the parts that need a script. */
+.lens, pre, .figcap { display: none; }

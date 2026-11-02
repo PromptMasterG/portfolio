@@ -1,0 +1,8 @@
+<ol class="checklist">
+{%- for row in site.data.skills %}{% if row.roles contains include.role %}
+<li>
+<div><h3>{{ row.requirement }}</h3><ul class="check-links">{% for l in row.links %}<li><a href="{{ l.url | relative_url }}">{{ l.title }}</a></li>{% endfor %}</ul></div>
+<p>{{ row.proof }}{% for id in row.facts %}{% assign f = site.data.facts[id] %}{% unless f %}{% include error-unknown-fact.html %}{% endunless %} <strong class="fact">{{ f.short | default: f.value }}</strong> <span class="small">(as of {{ f.as_of | date: "%-d %b %Y" }})</span>{% endfor %}</p>
+</li>
+{%- endif %}{% endfor %}
+</ol>

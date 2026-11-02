@@ -1,0 +1,68 @@
+# The roster is the one on the fact sheet. Each line says in plain words what the role is for.
+# "image" is the screen that comes closest to the job. For Scout, Strategist, Manager, Publisher and SEO the job line is the wording of the Studio Deck's own panel for that role; the other five lines are plain-words readings of the role name.
+orchestrator:
+  name: Orchestrator
+  job: "Takes each request, builds a brief from the channel's voice, audience and past corrections, and hands the work to a specialist. Hard monthly and per-run spend ceilings stop a run instead of warning about it."
+  image: assets/ai-studio-tool/agent-lab.png
+  lab: Agent Lab
+specialists:
+  - id: writer
+    name: Writer
+    job: "Drafts scripts and copy from the brief."
+    image: assets/ai-studio-tool/script-lab.png
+    crop: writer
+    lab: Script Lab
+  - id: seo
+    name: SEO
+    job: "Generates titles, descriptions, tags and SEO packages."
+    image: assets/ai-studio-tool/deck-seo.png
+    crop: panel
+    lab: Studio Deck, SEO panel
+  - id: designer
+    name: Designer
+    job: "Briefs and makes the visuals around a video, such as thumbnails and social graphics."
+    image: assets/ai-studio-tool/meowtok-carousel.png
+    crop: designer
+    lab: MeowTok carousel
+  - id: analyst
+    name: Analyst
+    job: "Reads how published videos performed, from the YouTube API or an imported CSV, and feeds the strongest hooks and titles back as examples."
+    image: assets/ai-studio-tool/dashboard.png
+    crop: analyst
+    lab: Dashboard, channel numbers
+  - id: strategist
+    name: Strategist
+    job: "Content strategy, video ideas, campaigns, calendars and series planning."
+    image: assets/ai-studio-tool/deck-strategist.png
+    crop: panel
+    lab: Studio Deck, Strategist panel
+  - id: manager
+    name: Manager
+    job: "Channel management, onboarding and admin tasks."
+    image: assets/ai-studio-tool/deck-manager.png
+    crop: panel
+    lab: Studio Deck, Manager panel
+  - id: publisher
+    name: Publisher
+    job: "Packages one piece of content for every platform at once: a YouTube title, description and tags plus a native caption per platform, in a single call."
+    image: assets/ai-studio-tool/deck-publisher.png
+    crop: panel
+    lab: Studio Deck, Publisher panel
+  - id: editor
+    name: Editor
+    job: "Reviews drafts and assembles scenes before they move on."
+    image: assets/ai-studio-tool/scene-builder.png
+    crop: editor
+    lab: Scene Builder
+  - id: community
+    name: Community
+    job: "Writes for the audience, such as social posts and replies."
+    image: assets/ai-studio-tool/meowtok-meme.png
+    crop: designer
+    lab: MeowTok meme
+  - id: scout
+    name: Scout
+    job: "Research direction: topic briefs, trend scans, competitor teardowns and fact-check directives."
+    image: assets/ai-studio-tool/deck-scout.png
+    crop: panel
+    lab: Studio Deck, Scout panel

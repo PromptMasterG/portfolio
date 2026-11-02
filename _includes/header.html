@@ -1,0 +1,13 @@
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-mark" aria-hidden="true">XN</span><span class="brand-name">{{ site.data.profile.name }}</span></a>
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        {%- for item in site.data.nav %}
+        <li><a href="{{ item.url | relative_url }}"{% if page.url contains item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    <button type="button" class="theme-toggle js-only" id="theme-toggle" aria-pressed="false">Dark mode</button>
+  </div>
+</header>

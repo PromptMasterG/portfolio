@@ -1,0 +1,37 @@
+title: Dr Xanqunnes Nursingh
+description: Portfolio of Dr Xanqunnes Nursingh, an AI engineer and AI content creator. Measured AI systems and AI video, with the evidence shown.
+url: https://promptmasterg.github.io
+baseurl: /portfolio
+lang: en-ZA
+timezone: Africa/Johannesburg
+
+# No theme: the layouts in this repository are the whole design.
+theme: null
+
+permalink: pretty
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+
+plugins:
+  - jekyll-sitemap
+
+# Build problems should stop the build, not scroll past.
+strict_front_matter: true
+liquid:
+  error_mode: strict
+  strict_filters: true
+
+exclude:
+  - README.md
+  - LICENSE
+  - profile-readme
+  - assets-manifest.json
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules
+  - .github

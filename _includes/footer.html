@@ -1,0 +1,14 @@
+{%- assign p = site.data.profile -%}
+<footer class="site-footer">
+  <div class="wrap">
+    <ul class="foot-links">
+      <li><a href="mailto:{{ p.email }}">{{ p.email }}</a></li>
+      <li><a href="{{ p.linkedin }}" rel="noopener noreferrer">LinkedIn</a></li>
+      <li><a href="{{ p.youtube }}" rel="noopener noreferrer">The Mafia Cats on YouTube</a></li>
+      <li><a href="{{ p.tool }}" rel="noopener noreferrer">Prompt Master G</a></li>
+    </ul>
+    <p>The source for the work shown here is private. I am happy to walk through it live. Every figure is dated where it appears.</p>
+    <p>One-page versions for applications: <a href="{{ '/for/ai-engineer/' | relative_url }}">AI engineering</a> and <a href="{{ '/for/ai-content-creator/' | relative_url }}">AI content creation</a>.</p>
+    <p class="small">Copyright 2026 {{ p.name }}. All rights reserved. View for evaluation only. {{ p.location }}.</p>
+  </div>
+</footer>

@@ -1,0 +1,119 @@
+# The skills-evidence matrix. Each row links to the page that carries the proof.
+- id: local-inference
+  requirement: LLM applications, local inference and performance tuning
+  proof: Measured throughput and cache reuse for a local model, and optimisations I declined after measuring.
+  roles: [engineer]
+  facts: [samara-tps-gpu, samara-cache-reuse]
+  links:
+    - {title: Samara, url: /work/samara/}
+    - {title: Measure before adopting, url: /how-i-build/#measure}
+
+- id: retrieval
+  requirement: Retrieval, embeddings and grounding
+  proof: Hybrid retrieval behind a grounding gate in Samara, and a multi-collection knowledge store that the AI Studio Tool's agent playbooks tell agents to query before they generate.
+  roles: [engineer]
+  facts: [mcs-collections]
+  links:
+    - {title: Samara, url: /work/samara/}
+    - {title: AI Studio Tool, url: /work/ai-studio-tool/#example}
+
+- id: agents-mcp
+  requirement: Agents and MCP
+  proof: An MCP server with an orchestrator and ten specialist agents, shown through a desktop app that runs a real channel.
+  roles: [engineer]
+  facts: [studio-tools]
+  links:
+    - {title: AI Studio Tool, url: /work/ai-studio-tool/#agents}
+
+- id: evaluation
+  requirement: Evaluation and testing
+  proof: A persona regression suite, adversarial cases that failed first and were fixed, and automated tests in three codebases.
+  roles: [engineer]
+  facts: [samara-suite-pass, tests-total]
+  links:
+    - {title: How I build, url: /how-i-build/}
+    - {title: Samara, url: /work/samara/}
+    - {title: AI Studio Tool, url: /work/ai-studio-tool/#verification}
+
+- id: cost-reliability
+  requirement: Cost control and reliability
+  proof: Spend ceilings that stop a run instead of warning, and a refresh that cannot overwrite a score.
+  roles: [engineer]
+  facts: []
+  links:
+    - {title: AI Studio Tool, url: /work/ai-studio-tool/#agents}
+    - {title: Signal, url: /work/signal/}
+
+- id: safety-privacy
+  requirement: Safety, privacy and ethics
+  proof: A crisis screen that does not depend on the model, an offline-by-design promise, and an ethics audit of companion-app harms.
+  roles: [engineer]
+  facts: []
+  links:
+    - {title: Samara, url: /work/samara/}
+
+- id: full-stack
+  requirement: Full-stack delivery
+  proof: Python services, React and TypeScript front ends, a Rust desktop shell and SQLite across the projects.
+  roles: [engineer]
+  facts: [samara-ts-lines]
+  links:
+    - {title: Work, url: /work/}
+
+- id: product-iteration
+  requirement: Product sense and iteration
+  proof: Signal went from a spreadsheet to an app after hands-on feedback, and was redesigned again after it was rejected as hard to use.
+  roles: [engineer, creator]
+  facts: [signal-passes]
+  links:
+    - {title: Signal, url: /work/signal/}
+
+- id: documentation
+  requirement: Documentation and handover
+  proof: Plans, manifests, ledgers and runbooks written so that a fresh agent or person can resume without me.
+  roles: [engineer]
+  facts: []
+  links:
+    - {title: Write for the next session, url: /how-i-build/#next-session}
+
+- id: pipeline
+  requirement: Production pipeline and continuity
+  proof: Records for the cast and locations and layered prompts across a long-running series. Continuity is handled by agent playbook guidance, not by automated checks.
+  roles: [creator]
+  facts: [mcs-library]
+  links:
+    - {title: AI Studio Tool, url: /work/ai-studio-tool/#example}
+
+- id: ai-video
+  requirement: AI video and content production
+  proof: A Veo 3 workflow with cast and location records and layered prompts behind a long-running series.
+  roles: [creator]
+  facts: [series-reach]
+  links:
+    - {title: Content, url: /content/}
+    - {title: AI Studio Tool, url: /work/ai-studio-tool/}
+
+- id: analytics
+  requirement: Audience analytics
+  proof: A retention and click-through packaging rubric, and the series' own view counts read by format.
+  roles: [creator]
+  facts: [series-top3]
+  links:
+    - {title: What performed best, url: /content/#numbers}
+    - {title: Signal, url: /work/signal/}
+
+- id: content-growth
+  requirement: Content that grows an audience, outside AI
+  proof: Live-action video, articles, carousels and a recurring series for a biosciences company, with growth reported across LinkedIn, TikTok and YouTube.
+  roles: [creator]
+  facts: [m2-linkedin]
+  links:
+    - {title: Content before AI, url: /content/#earlier}
+
+- id: public-communication
+  requirement: Public communication
+  proof: Cheat sheets and a free tool for AI video creators, published for anyone to use.
+  roles: [creator]
+  facts: [pmg-sheets]
+  links:
+    - {title: Prompt Master G, url: /work/prompt-master-g/}
