@@ -1,0 +1,50 @@
+# What each screen is and what the app does. Shown as a tooltip on hover or keyboard focus, and as the lightbox caption on the hero.
+# One entry per screenshot. Plain words, no figures.
+assets/ai-studio-tool/dashboard.png:
+  name: Studio v4, the desktop production app
+  does: A desktop app that keeps the cast, locations, lore and scripts of The Mafia Cats, builds prompts for outside video tools and tracks the channel's numbers. This is its dashboard.
+assets/ai-studio-tool/scene-builder.png:
+  name: Scene Builder
+  does: A tool that turns stored cast, location and scene records into layered Veo 3 prompts. The compiling is plain code, with no AI call.
+assets/ai-studio-tool/script-lab.png:
+  name: Script Lab
+  does: A tool that holds the series' scripts and episode timeline, with tabs for brainstorming, assembling, compiling and reading. Shown on the compiler tab, empty.
+assets/ai-studio-tool/agent-lab.png:
+  name: Agent Lab
+  does: A tool that writes the briefing giving an outside AI chat its role, rules and data access. This tab is the orchestrator form, shown before a run.
+assets/ai-studio-tool/meowtok-meme.png:
+  name: MeowTok, the meme editor
+  does: A social graphics editor with comic strip, meme, quote card, carousel and message mock-up tools, a live preview and PNG export.
+assets/ai-studio-tool/meowtok-carousel.png:
+  name: MeowTok, the carousel editor
+  does: A social graphics editor with comic strip, meme, quote card, carousel and message mock-up tools, a live preview and PNG export.
+assets/ai-studio-tool/studio-deck-org.png:
+  name: Studio Deck
+  does: The observatory for the agent server. Its org chart shows the orchestrator and ten specialists, with session cost, tokens and a monthly spend gauge. Shown as an offline snapshot.
+assets/ai-studio-tool/deck-scout.png:
+  name: Studio Deck, the Scout panel
+  does: The observatory for the agent server. This panel shows one role's job, what it produces and the words it routes on. Shown as an offline snapshot.
+assets/ai-studio-tool/deck-strategist.png:
+  name: Studio Deck, the Strategist panel
+  does: The observatory for the agent server. This panel shows one role's job, what it produces and the words it routes on. Shown as an offline snapshot.
+assets/ai-studio-tool/deck-manager.png:
+  name: Studio Deck, the Manager panel
+  does: The observatory for the agent server. This panel shows one role's job, what it produces and the words it routes on. Shown as an offline snapshot.
+assets/ai-studio-tool/deck-publisher.png:
+  name: Studio Deck, the Publisher panel
+  does: The observatory for the agent server. This panel shows one role's job, what it produces and the words it routes on. Shown as an offline snapshot.
+assets/ai-studio-tool/deck-seo.png:
+  name: Studio Deck, the SEO panel
+  does: The observatory for the agent server. This panel shows one role's job, what it produces and the words it routes on. Shown as an offline snapshot.
+assets/prompt-master-g/prompt-builder.png:
+  name: Prompt Master G
+  does: A free browser tool that builds structured Veo 3 prompts in three steps, with a live preview and JSON export.
+assets/prompt-master-g/cheat-sheets.png:
+  name: Prompt Master G cheat sheets
+  does: Published guides for AI video creators, on topics such as character consistency and cinematic camera shots.
+assets/samara/room-day.png:
+  name: Samara
+  does: A local, offline AI journal for Windows, with a character called the Keeper. The home screen is an illustrated room, and the light and season outside follow the real clock.
+assets/samara/room-night.png:
+  name: Samara at night
+  does: A local, offline AI journal for Windows, with a character called the Keeper. The same room as the day view, in dark tones.

@@ -4,6 +4,8 @@
   const run = f => { try { return f(); } catch (e) {} };
   const store = (k, v) => run(() => v === undefined ? localStorage.getItem(k) : localStorage.setItem(k, v));
   r.classList.replace('no-js', 'js');
+  ['pointerover', 'focusin'].forEach(t => d.addEventListener(t, () => r.classList.remove('tips-off')));
+  d.addEventListener('keydown', e => e.key === 'Escape' && r.classList.add('tips-off'));
 
   run(() => {
   const tb = $('#theme-toggle')[0], mq = matchMedia('(prefers-color-scheme: dark)');
@@ -45,7 +47,7 @@
       e.preventDefault();
       const s = $('img', a)[0];
       im.src = s.src; im.alt = s.alt;
-      cap.textContent = a.closest('figure').textContent.trim();
+      cap.textContent = ($('figcaption', a.closest('figure'))[0] || a).textContent.trim();
       dl.showModal();
     });
     dl.onclick = e => { if (e.target === dl || e.target.className === 'lb-x') dl.close(); };

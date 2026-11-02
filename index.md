@@ -3,11 +3,11 @@ layout: home
 title: Home
 description: Dr Xanqunnes Nursingh is an AI engineer and AI content creator. Measured AI systems and AI video, with the evidence dated and shown.
 jsonld: true
-facts: [samara-tps-gpu, samara-prefill-error, samara-suite-pass, series-reach, studio-tools, studio-tests, mcs-library, mcs-characters, mcs-locations, mcs-scripts, mcs-labs, signal-rubric, signal-sections, pmg-sheets]
+facts: [samara-suite-pass, mcs-collections, series-reach, studio-tools, studio-tests, mcs-library, mcs-characters, mcs-locations, mcs-scripts, mcs-labs, signal-rubric, signal-sections, pmg-sheets]
 proof:
-  - {fact: samara-tps-gpu, verb: Measured, href: /work/samara/#engine, fit: engineer, re: 1, rc: 4}
-  - {fact: samara-prefill-error, verb: Corrected on, href: /work/samara/#corrected, fit: engineer, re: 2, rc: 3}
-  - {fact: samara-suite-pass, verb: Run on, href: /work/samara/#verification, fit: engineer, re: 3, rc: 2}
+  - {fact: samara-suite-pass, verb: Run on, href: /work/samara/#verification, fit: engineer, re: 1, rc: 3}
+  - {fact: mcs-collections, verb: Counted on, href: /work/ai-studio-tool/#example, fit: engineer creator, re: 2, rc: 2}
+  - {fact: studio-tools, verb: Counted on, href: /work/ai-studio-tool/#agents, fit: engineer, re: 3, rc: 4}
   - {fact: series-reach, verb: Read on, href: /content/#numbers, fit: creator, re: 4, rc: 1}
 ---
 <section class="band-text" aria-labelledby="nonai-h">

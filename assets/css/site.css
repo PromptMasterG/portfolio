@@ -450,6 +450,27 @@ dialog.lb::backdrop { background: rgba(0, 0, 0, .8); backdrop-filter: blur(6px);
   @view-transition { navigation: none; }
   ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
 }
+/* ------------------------------------------------ screenshot tooltips: what the app does */
+.hero-art a.zoom, .shot a.zoom, .hub a.zoom { position: relative; display: block; }
+.hero-art a.zoom { cursor: zoom-in; }
+.row-img { position: relative; }
+.tip {
+  position: absolute; z-index: 5; left: .8rem; right: .8rem; bottom: .8rem; margin: 0; padding: .7rem .9rem .75rem;
+  max-width: 28rem; text-align: left; font: 400 .8125rem/1.42 var(--sans); letter-spacing: 0;
+  color: #f5f5f7; background: rgba(0, 0, 0, .9); border: 1px solid rgba(255, 255, 255, .2); border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, .45); pointer-events: none;
+  opacity: 0; visibility: hidden; transform: translateY(6px);
+  transition: opacity .18s var(--ease), transform .18s var(--ease), visibility 0s linear .18s;
+}
+.tip strong { font-weight: 650; color: #fff; }
+.hero-art .tip { top: clamp(.8rem, 2.4vw, 1.4rem); right: clamp(.8rem, 2.4vw, 1.4rem); bottom: auto; left: auto; width: min(24rem, calc(100% - 1.6rem)); }
+a.zoom:hover .tip, a.zoom:focus-visible .tip, .row-img:hover .tip, .row:focus-within .row-img .tip {
+  opacity: 1; visibility: visible; transform: none; transition-delay: .1s;
+}
+html.tips-off .tip { opacity: 0 !important; visibility: hidden !important; }
+@media (hover: none) { .tip { display: none; } }
+@media (prefers-reduced-motion: reduce) { .tip { transition: none; transform: none; } }
+@media print { .tip { display: none; } }
 @media print {
   .reveal { opacity: 1 !important; transform: none !important; animation: none !important; }
   .theme-toggle, .lens, .skip, .lens-fallback, .subnav { display: none !important; }

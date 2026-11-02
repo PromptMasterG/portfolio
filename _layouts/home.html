@@ -10,12 +10,12 @@ layout: default
   <p class="hero-email">or write to <a href="mailto:{{ p.email }}">{{ p.email }}</a></p>
   <p class="hero-avail">{{ p.availability }}</p>
   <p class="hero-links"><a href="{{ p.linkedin }}" rel="noopener noreferrer">LinkedIn</a><a href="{{ p.tool }}" rel="noopener noreferrer">Try Prompt Master G, the free tool</a><a href="{{ p.youtube }}" rel="noopener noreferrer">The Mafia Cats on YouTube</a></p>
-  {%- assign art_a = site.data.images | where: "file", "assets/samara/room-day.png" | first -%}
-  {%- assign tps = site.data.facts['samara-tps-gpu'] %}
-  <div class="hero-art" aria-hidden="true">
-    <img src="{{ art_a.file | relative_url }}" width="{{ art_a.width }}" height="{{ art_a.height }}" alt="{{ art_a.alt | escape }}" decoding="async">
-    <p class="art-chip"><strong>{{ tps.short }}</strong>measured {{ tps.as_of | date: "%-d %b %Y" }}</p>
-  </div>
+  {%- assign art_a = site.data.images | where: "file", "assets/ai-studio-tool/dashboard.png" | first -%}
+  {%- assign reach = site.data.facts['series-reach'] %}
+  <figure class="hero-art">
+    <a class="zoom" href="{{ art_a.file | relative_url }}" aria-describedby="tip-hero"><img src="{{ art_a.file | relative_url }}" width="{{ art_a.width }}" height="{{ art_a.height }}" alt="{{ art_a.alt | escape }}" decoding="async" fetchpriority="high">{% include tip.html file=art_a.file id="tip-hero" %}</a>
+    <p class="art-chip"><strong>{{ reach.short }}</strong>read {{ reach.as_of | date: "%-d %b %Y" }}</p>
+  </figure>
 </section>
 
 <div class="wrap lens-bar">
@@ -64,7 +64,7 @@ layout: default
         <p class="row-proof"><strong>{{ f.short | default: f.value }}</strong> {{ pr.proof_text }}<span class="stat-date">As of <time datetime="{{ f.as_of | date: '%Y-%m-%d' }}">{{ f.as_of | date: "%-d %b %Y" }}</time></span></p>
         <p class="row-more">Read the case study</p>
       </div>
-      <figure class="row-img">{% if pr.image %}<img src="{{ img.file | relative_url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}" loading="lazy" decoding="async">{% else %}{% include visual.html project=pr %}{% endif %}</figure>
+      <figure class="row-img">{% if pr.image %}<img src="{{ img.file | relative_url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}" loading="lazy" decoding="async">{% include tip.html file=img.file %}{% else %}{% include visual.html project=pr %}{% endif %}</figure>
     </li>
     {%- endif %}{% endfor %}
   </ol>

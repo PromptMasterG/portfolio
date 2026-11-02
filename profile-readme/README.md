@@ -8,8 +8,9 @@ Open to remote contract and part-time work. Johannesburg, South Africa (SAST, UT
 
 ## Proof
 
-- ~80 tokens/s local inference on a 16 GB consumer GPU, measured 18 Jul 2026. See [Samara](https://promptmasterg.github.io/portfolio/work/samara/#engine).
 - 44 of 45 persona regression cases passing, run on 5 Aug 2026. See [how it was verified](https://promptmasterg.github.io/portfolio/work/samara/#verification).
+- 6,988 chunks in a local knowledge store of 12 collections, built on ChromaDB with an embedding model that runs offline, counted on 1 Nov 2026. See [the AI Studio Tool](https://promptmasterg.github.io/portfolio/work/ai-studio-tool/#example).
+- 44 MCP tools behind an orchestrator and ten specialist agents, counted on 1 Nov 2026. See [the agent team](https://promptmasterg.github.io/portfolio/work/ai-studio-tool/#agents).
 - +1,466% LinkedIn followers at a biosciences company in 2024, creator-reported with no base figures, before I moved into AI video. See [Content before AI](https://promptmasterg.github.io/portfolio/content/#earlier).
 - 110+ videos, ~211K views in one series, read from the YouTube API on 5 Oct 2026. See [the numbers](https://promptmasterg.github.io/portfolio/content/#numbers).
 
