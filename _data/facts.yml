@@ -130,6 +130,8 @@ samara-commits:
 studio-tools:
   label: Tools exposed by the agent server
   value: "44 tools"
+  short: "44 tools"
+  strip_label: "tools exposed over MCP, behind an orchestrator and ten specialist agents"
   as_of: 2026-11-01
   claim: C30
   status: S
@@ -220,12 +222,14 @@ mcs-labs:
   status: S
 
 mcs-collections:
-  label: Knowledge collections that agents query before generating
-  value: "12 knowledge collections holding about 7K chunks"
-  short: "12 collections"
+  label: Local knowledge store in the desktop app, built on ChromaDB
+  value: "12 knowledge collections holding 6,988 chunks"
+  short: "6,988 chunks"
+  strip_label: "chunks in a local knowledge store of 12 collections, built on ChromaDB and searched with an embedding model that runs offline"
   as_of: 2026-11-01
   claim: C40
   status: S
+  basis: Counted on the running app. The store is built on ChromaDB with a local BGE-M3 embedding model.
 
 mcs-mcp:
   label: Size of the local MCP server's surface

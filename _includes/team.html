@@ -9,18 +9,20 @@
       <p class="hub-job">{{ o.job }}</p>
       <p class="seen">Example screen: {{ o.lab }}</p>
     </div>
-    <a class="zoom thumb" href="{{ oimg.file | relative_url }}"><img src="{{ oimg.file | relative_url }}" width="{{ oimg.width }}" height="{{ oimg.height }}" alt="The {{ o.lab }} screen of the desktop app" loading="lazy" decoding="async"></a>
+    <a class="zoom thumb" href="{{ oimg.file | relative_url }}" aria-describedby="tip-hub"><img src="{{ oimg.file | relative_url }}" width="{{ oimg.width }}" height="{{ oimg.height }}" alt="The {{ o.lab }} screen of the desktop app" loading="lazy" decoding="async">{% include tip.html file=oimg.file id="tip-hub" %}</a>
   </figure>
   <ol class="team-grid">
     {%- for a in roster.specialists %}
     {%- if a.image -%}
     {%- assign aimg = site.data.images | where: "file", a.image | first -%}
     {%- unless aimg -%}{% include error-unknown-image.html %}{%- endunless -%}
+    {%- assign atip = site.data.tips[a.image] -%}
+    {%- unless atip -%}{% include error-unknown-tip.html %}{%- endunless -%}
     {%- endif %}
     <li class="agent">
       <figure>
         {%- if a.image %}
-        <a class="zoom thumb crop-{{ a.crop }}" href="{{ aimg.file | relative_url }}"><img src="{{ aimg.file | relative_url }}" width="{{ aimg.width }}" height="{{ aimg.height }}" alt="The {{ a.lab }} screen of the desktop app" loading="lazy" decoding="async"></a>
+        <a class="zoom thumb crop-{{ a.crop }}" href="{{ aimg.file | relative_url }}" title="{{ atip.name | escape }}. {{ atip.does | escape }}"><img src="{{ aimg.file | relative_url }}" width="{{ aimg.width }}" height="{{ aimg.height }}" alt="The {{ a.lab }} screen of the desktop app" loading="lazy" decoding="async"></a>
         {%- else %}
         <span class="thumb mono" aria-hidden="true">{{ forloop.index | prepend: "0" | slice: -2, 2 }}</span>
         {%- endif %}

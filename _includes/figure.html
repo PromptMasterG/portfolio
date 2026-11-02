@@ -1,6 +1,7 @@
 {%- assign img = site.data.images | where: "file", include.file | first -%}
 {%- unless img -%}{% include error-unknown-image.html %}{%- endunless -%}
+{%- capture tid %}tip-{% increment tipn %}{% endcapture -%}
 <figure class="shot">
-  <a class="zoom" href="{{ img.file | relative_url }}"><img src="{{ img.file | relative_url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}"{% unless include.eager %} loading="lazy"{% endunless %} decoding="async"></a>
+  <a class="zoom" href="{{ img.file | relative_url }}" aria-describedby="{{ tid }}"><img src="{{ img.file | relative_url }}" width="{{ img.width }}" height="{{ img.height }}" alt="{{ img.alt | escape }}"{% unless include.eager %} loading="lazy"{% endunless %} decoding="async">{% include tip.html file=img.file id=tid %}</a>
   <figcaption>{{ img.caption }}</figcaption>
 </figure>
