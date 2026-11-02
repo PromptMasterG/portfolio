@@ -4,7 +4,7 @@
 {%- else -%}
   {%- assign full_title = page.title | append: ' | ' | append: p.name -%}
 {%- endif -%}
-{%- assign og_file = page.og_image | default: 'assets/samara/room-day.png' -%}
+{%- assign og_file = page.og_image | default: 'assets/share/portfolio-thumbnail.png' -%}
 {%- assign og = site.data.images | where: "file", og_file | first -%}
 {%- unless og -%}{% include error-unknown-image.html %}{%- endunless -%}
 <meta charset="utf-8">

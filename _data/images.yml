@@ -110,3 +110,10 @@
   height: 1080
   alt: "Studio Deck org chart with the SEO panel open, showing the role's job, what it produces and the keywords it routes on."
   caption: "Studio Deck: the orchestrator and its ten roles, with the panel for one role open. This one is SEO. The Deck is shown as a snapshot, with no channel attached. One setting name in the banner is blocked out."
+
+- file: assets/share/portfolio-thumbnail.png
+  project: portfolio
+  width: 1200
+  height: 627
+  alt: "Portfolio card for Dr Xanqunnes Nursingh, AI engineer and AI content creator, with three dated figures beside the desktop production app dashboard and the MeowTok carousel editor."
+  caption: "The portfolio card, used as the share image for link previews."
