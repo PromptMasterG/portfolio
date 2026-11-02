@@ -418,10 +418,10 @@ best-format:
   status: S
 
 persona-views:
-  label: Views on a separate AI persona series
-  value: "passed 3M views"
-  short: "3M+ views"
-  strip_label: "views on a separate AI persona series, kept visually consistent with a LoRA trained locally"
+  label: Views and followers of a viral AI influencer on Instagram
+  value: "3M views and 4K followers"
+  short: "3M views"
+  strip_label: "on a viral AI influencer I built, with 4K followers on Instagram"
   as_of: 2026-11-01
   claim: C74
   status: S
