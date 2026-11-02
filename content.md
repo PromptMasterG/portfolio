@@ -24,7 +24,7 @@ I make AI video with Veo 3, edit in CapCut Pro, use ElevenLabs for voice, and ru
 
 The pipeline is layered shot assembly built from character and location records. The desktop app in [AI Studio Tool]({{ '/work/ai-studio-tool/' | relative_url }}) is the software that does it.
 
-A separate AI persona series, kept visually consistent with a LoRA I trained locally, {% include fact.html id="persona-views" %} (creator-reported).
+A separate AI persona series, kept visually consistent with a LoRA I trained locally, {% include fact.html id="persona-views" %}.
 
 ## Featured videos
 
